@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
+
 
 export default function Home() {
   return (
@@ -15,6 +19,8 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <h2>Env is: `{publicRuntimeConfig.TEST_VAR}`</h2>
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -66,4 +72,8 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+Home.getInitialProps = async () => {
+  return {};
 }
